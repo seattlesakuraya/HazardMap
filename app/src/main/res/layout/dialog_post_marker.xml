@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <TextView
+        android:text="▼今いる場所の状況は？"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView" />
+
+    <RadioGroup android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:background="#eeff"
+        android:id="@+id/status">
+
+        <RadioButton
+            android:text="この場所注意"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_0" />
+
+        <RadioButton
+            android:text="この場所危険"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_1" />
+
+        <RadioButton
+            android:text="火事が起きてる"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_2" />
+
+        <RadioButton
+            android:text="救助を求めてる人がいる"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_3" />
+
+        <RadioButton
+            android:text="通行できない"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_4" />
+
+        <RadioButton
+            android:text="その他"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/status_5" />
+
+    </RadioGroup>
+
+    <TextView
+        android:text="▼コメント"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:id="@+id/textView2" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:lines="5"
+        android:background="#eeff"
+        android:id="@+id/comment"
+        android:layout_weight="0.12" />
+</LinearLayout>
