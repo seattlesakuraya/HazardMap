@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import sakuraya.bousai_g.R;
+import sakuraya.bousai_g.tasks.GetMarkerTask;
 import sakuraya.bousai_g.tasks.GetShelterTask;
 
 import static sakuraya.bousai_g.R.id.map;
@@ -173,6 +174,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // 避難所情報を取得
         GetShelterTask getShelterTask = new GetShelterTask(mMap);
         getShelterTask.execute(latitude, longitude);
+        //
+        GetMarkerTask getMarkerTask = new GetMarkerTask(mMap);
+        getMarkerTask.execute(Double.toString(currentLatitude), Double.toString(currentLongitude));
     }
 
 

@@ -10,6 +10,8 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
+import sakuraya.bousai_g.R;
+
 /**
  * 登録した場所
  */
@@ -22,6 +24,14 @@ public class Marker extends BaseMarker {
     private static final int RESCUE = 3; // 要救助者あり
     private static final int BLOCKED = 4; // 通行できない
     private static final int OTHERS = 5; // その他
+
+    // アイコン
+    private static final int WARNING_ICON = R.drawable.warning_m;
+    private static final int DANGER_ICON = R.drawable.danger;
+    private static final int FIRE_ICON = R.drawable.fire_m;
+    private static final int RESCUE_ICON = R.drawable.rescue_m;
+    private static final int BLOCKED_ICON = R.drawable.blocked_m;
+    private static final int OTHERS_ICON = R.drawable.others_m;
 
     private String comment;
     private int status;
@@ -57,6 +67,26 @@ public class Marker extends BaseMarker {
             this.comment = json.getString("comment");
             this.status = Integer.parseInt(json.getString("status"));
             this.created_at = new Date();
+            switch(this.status) {
+                case WARNING:
+                    this.setIconId(WARNING_ICON);
+                    break;
+                case DANGER:
+                    this.setIconId(DANGER_ICON);
+                    break;
+                case FIRE:
+                    this.setIconId(FIRE_ICON);
+                    break;
+                case RESCUE:
+                    this.setIconId(RESCUE_ICON);
+                    break;
+                case BLOCKED:
+                    this.setIconId(BLOCKED_ICON);
+                    break;
+                case OTHERS:
+                    this.setIconId(OTHERS_ICON);
+                    break;
+            }
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -65,8 +95,9 @@ public class Marker extends BaseMarker {
     // 地図上にプロット
     @Override
     public void plot(GoogleMap map) {
-        String description = this.comment + "¥n登録日時：" + this.created_at;
-        super.plot(map,description);
+        String title = "¥n登録日時：" + this.created_at;
+        String description = this.comment;
+        super.plot(map, title, description);
     }
 
 

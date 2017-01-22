@@ -62,6 +62,10 @@ public class GetShelterTask extends AsyncTask<Double, Void, JSONArray> {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if(con != null) {
+                con.disconnect();
+            }
         }
         return null;
     }

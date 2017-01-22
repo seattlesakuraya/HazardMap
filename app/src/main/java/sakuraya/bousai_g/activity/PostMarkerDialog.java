@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import sakuraya.bousai_g.R;
-import sakuraya.bousai_g.tasks.PostMarkerTask;
 
 /**
  * Created by sakuraya on 2017/01/22.
@@ -65,13 +64,48 @@ public class PostMarkerDialog extends DialogFragment {
 //                        Log.d("bousai_g", status);
 //                        Log.d("bousai_g", comment);
 
-                        PostMarkerTask postMarkerTask = new PostMarkerTask();
-                        postMarkerTask.execute(
-                                Double.toString(((MapsActivity)getActivity()).getCurrentLatitude()),
-                                Double.toString(((MapsActivity)getActivity()).getCurrentLongitude()),
-                                comment,
-                                status
-                        );
+//                        PostMarkerTask postMarkerTask = new PostMarkerTask();
+//                        postMarkerTask.execute(
+//                                Double.toString(((MapsActivity)getActivity()).getCurrentLatitude()),
+//                                Double.toString(((MapsActivity)getActivity()).getCurrentLongitude()),
+//                                comment,
+//                                status
+//                        );
+//                        PostMarkerTask postMarkerTask = new PostMarkerTask();
+//                        postMarkerTask.execute(
+//                                "35.67553",
+//                                "139.732732",
+//                                "道路が陥没しています",
+//                                "0"
+//                        );
+//                        PostMarkerTask postMarkerTask1 = new PostMarkerTask();
+//                        postMarkerTask1.execute(
+//                                "35.67471",
+//                                "139.739556",
+//                                "ビルが倒壊しています",
+//                                "1"
+//                        );
+//                        PostMarkerTask postMarkerTask2 = new PostMarkerTask();
+//                        postMarkerTask2.execute(
+//                                "35.679204",
+//                                "139.738933",
+//                                "燃えてます",
+//                                "2"
+//                        );
+//                        PostMarkerTask postMarkerTask3 = new PostMarkerTask();
+//                        postMarkerTask3.execute(
+//                                "35.677368",
+//                                "139.737455",
+//                                "瓦礫の下敷きになっている人がいます",
+//                                "3"
+//                        );
+//                        PostMarkerTask postMarkerTask4 = new PostMarkerTask();
+//                        postMarkerTask4.execute(
+//                                "35.674624",
+//                                "139.735403",
+//                                "通れません",
+//                                "4"
+//                        );
                     }
                 });
         // Create the AlertDialog object and return it

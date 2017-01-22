@@ -8,10 +8,14 @@ import com.google.android.gms.maps.GoogleMap;
 
 import org.json.JSONObject;
 
+import sakuraya.bousai_g.R;
+
 /**
  * 避難所
  */
 public class Shelter extends BaseMarker {
+
+    private static final int iconId = R.drawable.shelter_m;
 
     // 避難所名
     private String name;
@@ -39,6 +43,7 @@ public class Shelter extends BaseMarker {
         try {
             this.name = json.getString("name");
             this.type = json.getString("type");
+            super.setIconId(iconId);
         } catch(Exception e) {
             e.printStackTrace();
         }
@@ -47,8 +52,9 @@ public class Shelter extends BaseMarker {
     // 地図上にプロット
     @Override
     public void plot(GoogleMap map) {
-        String description = "避難所名：" + this.name + "¥n種別:" + "：" + this.type;
-        super.plot(map, description);
+        String title = "避難所名：" + this.name;
+        String description =  "種別:" + "：" + this.type;
+        super.plot(map, title, description);
     }
 
 }
