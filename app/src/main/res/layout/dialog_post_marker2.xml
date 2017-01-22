@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+
+    <TextView
+        android:text="▼今いる場所の状況は？"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/textView"
+        android:layout_marginBottom="10dp"/>
+
+    <RadioGroup android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/status">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_0_wrapper"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+
+                    <RadioButton
+                        android:id="@+id/status_0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableBottom="@drawable/warning_m"
+                        android:button="@null"
+                        android:text="※注意※"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_1_wrapper"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+
+                    <RadioButton
+                        android:id="@+id/status_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableBottom="@drawable/danger_m"
+                        android:button="@null"
+                        android:text="！危険！"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_2_wrapper"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+
+                    <RadioButton
+                        android:id="@+id/status_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableBottom="@drawable/fire_m"
+                        android:button="@null"
+                        android:text="火災発生"
+                        />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_3_wrapper"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    >
+
+                    <RadioButton
+                        android:id="@+id/status_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableBottom="@drawable/rescue_m"
+                        android:button="@null"
+                        android:text="救助が必要"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_4_wrapper"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+
+                    <RadioButton
+                        android:id="@+id/status_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableBottom="@drawable/blocked_m"
+                        android:button="@null"
+                        android:text="通行不能"
+                       />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/status_5_wrapper"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal">
+
+                    <RadioButton
+                        android:id="@+id/status_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableBottom="@drawable/others_m"
+                        android:button="@null"
+                        android:text="その他"
+                        />
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+    </RadioGroup>
+
+    <TextView
+        android:text="▼コメント"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/textView2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:lines="5"
+        android:background="#eeff"
+        android:id="@+id/comment"
+        android:layout_weight="0.12" />
+</LinearLayout>

@@ -1,7 +1,10 @@
 package sakuraya.bousai_g.tasks;
 
+
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
@@ -17,6 +20,12 @@ import java.net.URL;
  * 現在地の状況を登録する
  */
 public class PostMarkerTask extends AsyncTask<String, Void, Boolean> {
+
+    private Context context;
+
+    public PostMarkerTask(Context context) {
+        this.context = context;
+    }
 
     @Override
     protected void onPreExecute() {
@@ -78,6 +87,8 @@ public class PostMarkerTask extends AsyncTask<String, Void, Boolean> {
     @Override
     protected void onPostExecute(Boolean result) {
         super.onPostExecute(result);
+
+        Toast.makeText(context.getApplicationContext(), "登録しました！", Toast.LENGTH_SHORT);
     }
 
 }

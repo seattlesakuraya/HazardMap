@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:top="0dp" android:left="0dp" android:bottom="40dp" android:right="0dp">
+        <selector >
+
+            <!-- 選択状態の選択肢が押されたとき -->
+            <item
+                android:state_checked="true"
+                android:state_pressed="true"
+                android:drawable="@drawable/off_pressed"
+                />
+
+            <!-- 選択されているとき -->
+            <item
+                android:state_checked="true"
+                android:drawable="@drawable/on"
+                />
+
+            <!-- 選択されていない選択肢が押されたとき -->
+            <item
+                android:state_checked="false"
+                android:state_pressed="true"
+                android:drawable="@drawable/off_pressed"
+                />
+
+            <!-- 選択されていない選択肢にフォーカスがあたったとき -->
+            <item
+                android:state_focused="true"
+                android:state_checked="false"
+                android:state_pressed="false"
+                android:drawable="@drawable/on"
+                />
+
+            <!-- 選択されていない選択肢のデフォルト状態 -->
+            <item
+                android:state_checked="false"
+                android:drawable="@drawable/off"
+                />
+        </selector>
+    </item>
+</layer-list>

@@ -8,6 +8,7 @@ import com.google.android.gms.maps.GoogleMap;
 
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import sakuraya.bousai_g.R;
@@ -27,7 +28,7 @@ public class Marker extends BaseMarker {
 
     // アイコン
     private static final int WARNING_ICON = R.drawable.warning_m;
-    private static final int DANGER_ICON = R.drawable.danger;
+    private static final int DANGER_ICON = R.drawable.danger_m;
     private static final int FIRE_ICON = R.drawable.fire_m;
     private static final int RESCUE_ICON = R.drawable.rescue_m;
     private static final int BLOCKED_ICON = R.drawable.blocked_m;
@@ -95,7 +96,8 @@ public class Marker extends BaseMarker {
     // 地図上にプロット
     @Override
     public void plot(GoogleMap map) {
-        String title = "¥n登録日時：" + this.created_at;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        String title = sdf.format(this.created_at);
         String description = this.comment;
         super.plot(map, title, description);
     }

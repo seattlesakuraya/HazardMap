@@ -3,16 +3,18 @@ package sakuraya.bousai_g.activity;
 import android.app.DialogFragment;
 import android.app.Service;
 import android.content.pm.PackageManager;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,6 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private static double currentLatitude;
     private static double currentLongitude;
+    private static int currentMapType = 0;
 
     public double getCurrentLatitude() {
         return currentLatitude;
@@ -61,23 +64,45 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mLocationManager = (LocationManager)this.getSystemService(Service.LOCATION_SERVICE);
 
         // 場所を登録するボタン
-        Button registerBtn = (Button)this.findViewById(R.id.register_btn);
+        FloatingActionButton registerBtn = (FloatingActionButton) this.findViewById(R.id.register);
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DialogFragment newFragment = new PostMarkerDialog();
                 newFragment.show(getFragmentManager(), "post marker");
+            }
+        });
 
-//                int WARNING = 0;
-//                PostMarkerTask postMarkerTask = new PostMarkerTask();
-//                postMarkerTask.execute(
-//                        Double.toString(currentLatitude),
-//                        Double.toString(currentLongitude),
-//                        "this is a text",
-//                        Integer.toString(WARNING)
-//                );
-//                GetMarkerTask getMarkerTask = new GetMarkerTask(mMap);
-//                getMarkerTask.execute();
+        FloatingActionButton mapTypeBtn = (FloatingActionButton) this.findViewById(R.id.map_type);
+        mapTypeBtn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#00aaff")));
+        mapTypeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            switch(currentMapType) {
+                case 0:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+                    currentMapType = 1;
+                    break;
+                case 1:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+                    currentMapType = 2;
+                    break;
+                case 2:
+                    mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                    currentMapType = 0;
+                    break;
+            }
+            }
+        });
+
+        FloatingActionButton locationBtn = (FloatingActionButton) this.findViewById(R.id.location);
+        locationBtn.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#dd0000")));
+        locationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requestLocationUpdates();
+                mMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(currentLatitude, currentLongitude)));
+                mMap.moveCamera(CameraUpdateFactory.zoomTo(16));
             }
         });
     }
@@ -87,6 +112,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        mMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                DialogFragment newFragment = new PostMarkerDialog();
+                ((PostMarkerDialog)newFragment).setLatLng(latLng.latitude, latLng.longitude);
+                newFragment.show(getFragmentManager(), "post marker");
+            }
+        });
         requestLocationUpdates();
     }
 
